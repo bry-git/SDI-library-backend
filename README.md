@@ -1,6 +1,29 @@
 # sdi-library-backend
 
 > ReST API for the SDI Library project
+> the client app can be found at: https://github/blah
+
+### TODO:
+- [x] pull dependencies
+- [x] package.json start and build scripts
+- [x] ERD diagram
+- [x] feathers services for database
+- [x] knex migration and seed data
+- [ ] custom knex query for checked out books
+- [ ] should be able to search the checkout table with search function
+- [ ] front end react app
+
+
+
+
+
+
+
+
+
+
+
+# Feathers framework ish
 
 ## About
 
