@@ -7,7 +7,12 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [],
+    patch: [
+      async context => {
+        context.data.updated_at = new Date();
+        return context;
+      }
+    ],
     remove: []
   },
 
