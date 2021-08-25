@@ -5,6 +5,7 @@ const hooks = require('./book.hooks');
 
 module.exports = function (app) {
   const options = {
+    id: 'book_id',
     Model: createModel(app),
     paginate: app.get('paginate')
   };

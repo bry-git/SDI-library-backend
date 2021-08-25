@@ -1,11 +1,10 @@
 const { Service } = require('feathers-knex');
 
-exports.Book = class Book extends Service {
+exports.Checkout = class Checkout extends Service {
   constructor(options) {
     super({
       ...options,
-      name: 'book'
+      name: 'checkout'
     });
   }
-
 };
