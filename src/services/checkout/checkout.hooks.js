@@ -1,4 +1,6 @@
-
+const { validate } = require('feathers-hooks-common');
+const validateSchema = require('feathers-validate-joi');
+const checkoutSchema = require ('./checkout.schema');
 
 module.exports = {
   before: {
@@ -7,8 +9,7 @@ module.exports = {
     find: [
       async context => {
         const query = context.service.createQuery(context.params);
-  
-        // do something with query here        
+
         query
           .select('*')
           .innerJoin('user', 'checkout.user_id', 'user.user_id')
@@ -20,8 +21,7 @@ module.exports = {
     get: [
       async context => {
         const query = context.service.createQuery(context.params);
-  
-        // do something with query here
+
         query
           .select('*')
           .where({checkout_id: context.id})
@@ -31,14 +31,31 @@ module.exports = {
         return context;
       }
     ],
-    create: [],
-    update: [],
-    patch: [],
+    create: [
+      validateSchema.form(checkoutSchema.checkout, checkoutSchema.options)
+      //TODO need to check if the book_id and user_id are valid
+    ],
+    update: [
+      //TODO need to check if the book_id and user_id are valid
+      validateSchema.form(checkoutSchema.checkout, checkoutSchema.options),
+      async context => {
+        context.data.updated_at = new Date();
+        return context;
+      }
+    ],
+    patch: [
+      //TODO need to check if the book_id and user_id are valid
+      validateSchema.form(checkoutSchema.checkout, checkoutSchema.options),
+      async context => {
+        context.data.updated_at = new Date();
+        return context;
+      }
+    ],
     remove: []
   },
   after: {
     all: [
-      
+
     ],
     find: [
 

@@ -9,8 +9,8 @@
 - [x] ERD diagram
 - [x] feathers services for database
 - [x] knex migration and seed data
-- [ ] custom knex query for checked out books
-- [ ] should be able to search the checkout table with search function
+- [x] custom knex query for checked out books
+- [x] should be able to search the checkout table with search function
 - [ ] front end react app
 
 
