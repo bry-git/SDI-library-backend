@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:lts-alpine
 
 RUN mkdir -p /src/app
 
@@ -6,10 +6,8 @@ WORKDIR /src/app
 
 COPY . /src/app
 
-RUN yarn install
-
-RUN yarn global add nodemon
+RUN npm install
 
 EXPOSE 3030
 
-CMD [ "npm", "start"]
+CMD [ "npm", "run", "build"]
