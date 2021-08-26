@@ -1,13 +1,20 @@
-
+const validateSchema = require('feathers-validate-joi');
+const bookSchema = require ('./book.schema');
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
-    update: [],
+    create: [ validateSchema.form(bookSchema.book, bookSchema.options) ],
+    update: [
+      validateSchema.form(bookSchema.book, bookSchema.options),
+      async context => {
+        context.data.updated_at = new Date();
+        return context;
+      } ],
     patch: [
+      validateSchema.form(bookSchema.book, bookSchema.options),
       async context => {
         context.data.updated_at = new Date();
         return context;
