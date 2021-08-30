@@ -16,7 +16,8 @@ const services = require('./services');
 const appHooks = require('./app.hooks');
 const channels = require('./channels');
 
-const knex = require('./knex');
+//const knex = require('./knex');
+const objection = require('./objection');
 
 const app = express(feathers());
 
@@ -37,9 +38,8 @@ app.use('/', express.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(express.rest());
 
-
-app.configure(knex);
-
+//app.configure(knex);
+app.configure(objection);
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
@@ -53,5 +53,6 @@ app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);
+
 
 module.exports = app;
